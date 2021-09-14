@@ -33,8 +33,36 @@ def encrypt_message(message, a, b):
     return ciphertext
 
 
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+
+def get_modular_inverse(a, m=26):
+    for x in range(m):
+        if (a * x) % m == 1:
+            return x
+    raise ValueError('No modular inverse')
+
+
+def decrypt_number(num, a, b):
+    return (a * (num - b)) % 26
+
+
 def decrypt_message(message, a, b):
-    raise NotImplementedError
+    numeric_message = [
+        character_to_number(character) for character in message
+    ]
+    numeric_plaintext = [
+        decrypt_number(
+            num, get_modular_inverse(a), b
+        ) for num in numeric_message
+    ]
+    plaintext = ''.join([
+        number_to_character(num) for num in numeric_plaintext
+    ])
+    return plaintext
 
 
 def main():
