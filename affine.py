@@ -43,7 +43,7 @@ def get_modular_inverse(a, m=26):
     for x in range(m):
         if (a * x) % m == 1:
             return x
-    raise ValueError('No modular inverse')
+    raise ValueError('No modular inverse of {}'.format(a))
 
 
 def decrypt_number(num, a, b):
