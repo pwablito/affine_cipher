@@ -23,6 +23,10 @@ def encrypt_message(message, a, b):
     return ciphertext
 
 
+def decrypt_message(message, a, b):
+    raise NotImplementedError
+
+
 def main():
     parser = argparse.ArgumentParser(
         description='Encrypt or decrypt a message using affine cipher.'
@@ -40,6 +44,7 @@ def main():
         print(decrypt_message(message, args.a, args.b))
     else:
         exit("Invalid command")
+
 
 if __name__ == "__main__":
     main()
